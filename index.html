@@ -43,6 +43,8 @@
     <!--Defer loading the whole page css-->
     <link rel="stylesheet" href="./css/local.css" media="print" onload="this.media='all'; this.onload=null;">
 
+
+
     <!--If the user has javascript disbaled, load this stylesheet-->
     <noscript>
         <link rel="stylesheet" href="./css/local.css">
@@ -507,6 +509,80 @@
             }
         });
     </script>
+
+
+     <!-- JavaScript for chat button and iframe -->
+     
+     
+     
+    
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+     <script>
+         (function() {
+             var isIframeVisible = false;
+             var style = document.createElement('style');
+             style.innerHTML = `
+                 #fab {
+                     position: fixed;
+                     bottom: 20px;
+                     right: 20px;
+                     z-index: 1000;
+                     width: 56px;
+                     height: 56px;
+                     border-radius: 50%;
+                     background-color: black;
+                     color: white;
+                     border: none;
+                     font-size: 24px;
+                     cursor: pointer;
+                     display: flex;
+                     align-items: center;
+                     justify-content: center;
+                 }
+                 #iframeContainer {
+                     position: fixed;
+                     bottom: 90px;
+                     right: 20px;
+                     width: 25vw;
+                     height: 50vh;
+                     display: none;
+                     z-index: 999;
+                     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                 }
+                 #iframeContainer iframe {
+                     width: 100%;
+                     height: 100%;
+                     border: none;
+                     border-radius: 8px;
+                 }
+             `;
+             document.head.appendChild(style);
+
+             var fab = document.createElement('button');
+             fab.id = 'fab';
+             fab.innerHTML = '<i class="fas fa-comments"></i>';
+             document.body.appendChild(fab);
+
+             var iframeContainer = document.createElement('div');
+             iframeContainer.id = 'iframeContainer';
+             var iframe = document.createElement('iframe');
+             iframe.src = 'https://lhi-custom-gpt-automation-gilt.vercel.app/embed/asst_MFiZxtKbUWEjpMvlWTwDkOAS';
+             iframeContainer.appendChild(iframe);
+             document.body.appendChild(iframeContainer);
+
+             fab.addEventListener('click', function() {
+                 isIframeVisible = !isIframeVisible;
+                 iframeContainer.style.display = isIframeVisible ? 'block' : 'none';
+             });
+         })();
+     </script>
+ 
+   
+   
+ 
+    
+ 
+ 
 
 </body>
 </html>
